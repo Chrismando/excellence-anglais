@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Professeurs - Excellence Anglais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --purple: #9b59b6;
+            --teal: #1abc9c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border-radius: 20px;
+            padding: 8px 20px !important;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .teacher-card {
+            text-align: center;
+            padding: 30px;
+            border-top: 5px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .teacher-1 { border-top-color: var(--success); }
+        .teacher-2 { border-top-color: var(--warning); }
+        .teacher-3 { border-top-color: var(--secondary); }
+        .teacher-4 { border-top-color: var(--purple); }
+        
+        .teacher-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .certification-badge {
+            background: linear-gradient(45deg, var(--success), var(--teal));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            border: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, var(--light), white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border-left: 5px solid var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas me-2"></i>Excellence Anglais
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programme.html">Programme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="professeurs.html">Professeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">Nos Professeurs Professionnels</h1>
+                    <p class="lead fs-5">Des enseignants certifiés et expérimentés dédiés à votre réussite</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistiques Équipe -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>8+ Ans</h3>
+                        <p class="text-muted">Expérience moyenne</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>100%</h3>
+                        <p class="text-muted">Professeurs certifiés</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>4 Pays</h3>
+                        <p class="text-muted">D'expérience internationale</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>5000+</h3>
+                        <p class="text-muted">Heures d'enseignement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Équipe Pédagogique -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Notre Équipe Pédagogique</h2>
+                    <p class="lead">Des professionnels passionnés par l'enseignement de l'anglais</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Professeur 1 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card teacher-card teacher-1">
+                        <div class="teacher-avatar">SJ</div>
+                        <h3>Sarah Johnson</h3>
+                        <p class="text-primary fw-bold">Formatrice Principale - Spécialiste Grammaire</p>
+                        
+                        <div class="mb-3">
+                            <span class="certification-badge">CELTA</span>
+                            <span class="certification-badge">DELTA</span>
+                            <span class="certification-badge">MA Linguistics</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>📚 Expérience : 12 ans</h5>
+                            <p class="text-muted">Spécialiste de l'enseignement aux adultes et préparation aux examens internationaux</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>🎯 Spécialités :</h5>
+                            <ul class="list-unstyled">
+                                <li>• Grammaire avancée et perfectionnement</li>
+                                <li>• Préparation aux certifications (TOEFL, IELTS)</li>
+                                <li>• Anglais académique et rédaction</li>
+                                <li>• Correction phonétique avancée</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded">
+                            <h6>💬 Philosophie d'enseignement :</h6>
+                            <p class="mb-0">"Je crois que chaque étudiant peut maîtriser l'anglais avec la bonne méthode et un accompagnement personnalisé."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professeur 2 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card teacher-card teacher-2">
+                        <div class="teacher-avatar">MB</div>
+                        <h3>Michael Brown</h3>
+                        <p class="text-primary fw-bold">Formateur Conversation - Natif Britannique</p>
+                        
+                        <div class="mb-3">
+                            <span class="certification-badge">TEFL</span>
+                            <span class="certification-badge">PGCE</span>
+                            <span class="certification-badge">Business English</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>📚 Expérience : 8 ans</h5>
+                            <p class="text-muted">Expert en enseignement en ligne et formation professionnelle en entreprise</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>🎯 Spécialités :</h5>
+                            <ul class="list-unstyled">
+                                <li>• Anglais des affaires et professionnel</li>
+                                <li>• Prononciation et accent britannique</li>
+                                <li>• Communication interculturelle</li>
+                                <li>• Préparation aux entretiens</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded">
+                            <h6>💬 Philosophie d'enseignement :</h6>
+                            <p class="mb-0">"L'anglais doit être vivant et pratique. Mes cours sont basés sur des situations réelles de communication."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professeur 3 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card teacher-card teacher-3">
+                        <div class="teacher-avatar">ED</div>
+                        <h3>Emily Davis</h3>
+                        <p class="text-primary fw-bold">Formatrice Débutants - Pédagogue Confirmée</p>
+                        
+                        <div class="mb-3">
+                            <span class="certification-badge">TEFL</span>
+                            <span class="certification-badge">TESOL</span>
+                            <span class="certification-badge">Young Learners</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>📚 Expérience : 10 ans</h5>
+                            <p class="text-muted">Spécialiste des débutants complets et des cours pour enfants/adolescents</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>🎯 Spécialités :</h5>
+                            <ul class="list-unstyled">
+                                <li>• Méthodologie pour grands débutants</li>
+                                <li>• Cours enfants et adolescents</li>
+                                <li>• Apprentissage ludique et motivant</li>
+                                <li>• Construction des bases solides</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded">
+                            <h6>💬 Philosophie d'enseignement :</h6>
+                            <p class="mb-0">"Apprendre une langue doit être un plaisir. Je crée un environnement bienveillant où l'erreur est une étape vers le succès."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professeur 4 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card teacher-card teacher-4">
+                        <div class="teacher-avatar">RW</div>
+                        <h3>Robert Wilson</h3>
+                        <p class="text-primary fw-bold">Formateur Avancé - Expert Communication</p>
+                        
+                        <div class="mb-3">
+                            <span class="certification-badge">DELTA</span>
+                            <span class="certification-badge">MA TESOL</span>
+                            <span class="certification-badge">Coach Certifié</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>📚 Expérience : 15 ans</h5>
+                            <p class="text-muted">Expert en communication avancée et formation de formateurs</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>🎯 Spécialités :</h5>
+                            <ul class="list-unstyled">
+                                <li>• Communication executive</li>
+                                <li>• Prise de parole en public</li>
+                                <li>• Négociation et persuasion</li>
+                                <li>• Anglais technique et spécialisé</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded">
+                            <h6>💬 Philosophie d'enseignement :</h6>
+                            <p class="mb-0">"Ma mission est de vous donner les outils pour communiquer avec confiance et impact dans n'importe quelle situation professionnelle."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Qualité -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Notre Engagement Qualité</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h4>Recrutement Rigoureux</h4>
+                            <p class="text-muted">Tous nos professeurs passent par un processus de sélection en 5 étapes incluant des démonstrations pédagogiques</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Formation Continue</h4>
+                            <p class="text-muted">Formations mensuelles sur les nouvelles méthodes pédagogiques et outils d'enseignement en ligne</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>Évaluation Régulière</h4>
+                            <p class="text-muted">Feedback continu des étudiants et évaluations trimestrielles pour maintenir l'excellence pédagogique</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4">Prêt à Apprendre avec Nos Experts ?</h3>
+                            <p class="lead mb-4">Rejoignez l'un de nos groupes de 25 étudiants maximum et bénéficiez d'un enseignement de qualité professionnelle</p>
+                            <a href="contact.html" class="btn btn-light btn-lg me-3">
+                                <i class="fas fa-calendar-check me-2"></i>Réserver ma Place
+                            </a>
+                            <a href="programme.html" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-book me-2"></i>Voir le Programme
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4><i class="fas fa-globe-americas me-2"></i>Excellence Anglais</h4>
+                    <p>Votre partenaire de confiance pour maîtriser l'anglais. Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Formation Anglais</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="programme.html" class="text-light">Programme Complet 12 Mois</a></li>
+                        <li><a href="professeurs.html" class="text-light">Nos Professeurs</a></li>
+                        <li><a href="tarifs.html" class="text-light">Tarifs & Inscriptions</a></li>
+                        <li><a href="contact.html" class="text-light">Contact & Rendez-vous</a></li>
+                        <li><a href="faq.html" class="text-light">Questions Fréquentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Rapide</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +243 XX XXX XXXX</li>
+                        <li><i class="fas fa-envelope me-2"></i> contact@excellenceanglais.cd</li>
+                        <li><i class="fas fa-clock me-2"></i> Lun-Ven: 8h-18h</li>
+                        <li><i class="fas fa-users me-2"></i> 25 personnes max par groupe</li>
+                        <li><i class="fas fa-laptop me-2"></i> 100% en ligne</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 Excellence Anglais. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p><a href="#" class="text-light">Mentions légales</a> | <a href="#" class="text-light">Politique de confidentialité</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+        
+        backToTopButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>

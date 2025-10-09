@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Excellence Anglais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --purple: #9b59b6;
+            --teal: #1abc9c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border-radius: 20px;
+            padding: 8px 20px !important;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            border: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .faq-category {
+            background: linear-gradient(135deg, var(--light), white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .accordion-button {
+            background: linear-gradient(135deg, var(--light), white);
+            border: none;
+            border-radius: 15px !important;
+            padding: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            box-shadow: none;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--secondary);
+        }
+        
+        .accordion-body {
+            background: white;
+            border-radius: 0 0 15px 15px;
+            padding: 20px;
+        }
+        
+        .quick-link-card {
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            height: 100%;
+            background: white;
+            border: 2px solid transparent;
+        }
+        
+        .quick-link-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .quick-link-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 15px;
+        }
+        
+        .search-box {
+            border-radius: 50px;
+            padding: 15px 25px;
+            border: 2px solid var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .search-box:focus {
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas me-2"></i>Excellence Anglais
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programme.html">Programme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="professeurs.html">Professeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">Questions Fréquentes</h1>
+                    <p class="lead fs-5">Trouvez rapidement des réponses à vos questions sur notre formation</p>
+                    
+                    <!-- Barre de recherche -->
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-lg-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-box" placeholder="Rechercher une question...">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liens Rapides -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Navigation Rapide</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="#inscription" class="text-decoration-none">
+                        <div class="quick-link-card">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h6>Inscription</h6>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="#paiement" class="text-decoration-none">
+                        <div class="quick-link-card">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h6>Paiement</h6>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="#cours" class="text-decoration-none">
+                        <div class="quick-link-card">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h6>Cours</h6>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="#technique" class="text-decoration-none">
+                        <div class="quick-link-card">
+                            <div class="quick-link-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h6>Technique</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <!-- Inscription -->
+            <div class="faq-category" id="inscription">
+                <h3 class="text-primary mb-4">
+                    <i class="fas fa-user-plus me-2"></i>Inscription & Admission
+                </h3>
+                
+                <div class="accordion" id="accordionInscription">
+                    <!-- Question 1 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inscription1">
+                                Comment puis-je m'inscrire à la formation ?
+                            </button>
+                        </h2>
+                        <div id="inscription1" class="accordion-collapse collapse" data-bs-parent="#accordionInscription">
+                            <div class="accordion-body">
+                                <p>L'inscription se fait en 4 étapes simples :</p>
+                                <ol>
+                                    <li><strong>Demande de contact</strong> via notre formulaire en ligne ou par téléphone</li>
+                                    <li><strong>Test de niveau gratuit</strong> pour évaluer votre niveau actuel</li>
+                                    <li><strong>Choix de la formule</strong> adaptée à vos besoins et disponibilités</li>
+                                    <li><strong>Signature de la convention</strong> et début des cours</li>
+                                </ol>
+                                <p class="mb-0"><strong>Important :</strong> Les inscriptions se font uniquement sur rendez-vous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 2 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inscription2">
+                                Faut-il un niveau minimum pour s'inscrire ?
+                            </button>
+                        </h2>
+                        <div id="inscription2" class="accordion-collapse collapse" data-bs-parent="#accordionInscription">
+                            <div class="accordion-body">
+                                <p><strong>Absolument pas !</strong> Nous acceptons tous les niveaux, des vrais débutants complets aux niveaux avancés.</p>
+                                <p>Notre programme est structuré en 4 niveaux progressifs :</p>
+                                <ul>
+                                    <li><strong>Niveau 1 :</strong> Pour les grands débutants (aucune connaissance requise)</li>
+                                    <li><strong>Niveau 2 :</strong> Pour ceux qui ont des bases</li>
+                                    <li><strong>Niveau 3 :</strong> Pour les intermédiaires</li>
+                                    <li><strong>Niveau 4 :</strong> Pour les avancés</li>
+                                </ul>
+                                <p class="mb-0">Le test de niveau gratuit nous permet de vous orienter vers le groupe adapté.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 3 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inscription3">
+                                Les groupes sont-ils vraiment limités à 25 personnes ?
+                            </button>
+                        </h2>
+                        <div id="inscription3" class="accordion-collapse collapse" data-bs-parent="#accordionInscription">
+                            <div class="accordion-body">
+                                <p><strong>Oui, absolument !</strong> Nous maintenons strictement la limite de 25 étudiants par groupe pour plusieurs raisons :</p>
+                                <ul>
+                                    <li>✅ <strong>Attention personnalisée</strong> du professeur pour chaque étudiant</li>
+                                    <li>✅ <strong>Plus de temps de parole</strong> pour pratiquer l'expression orale</li>
+                                    <li>✅ <strong>Meilleure interaction</strong> entre les participants</li>
+                                    <li>✅ <strong>Suivi individualisé</strong> des progrès de chacun</li>
+                                    <li>✅ <strong>Ambiance conviviale</strong> et dynamique de classe</li>
+                                </ul>
+                                <p class="mb-0">C'est notre engagement qualité : pas de classes surchargées comme dans d'autres formations !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paiement -->
+            <div class="faq-category" id="paiement">
+                <h3 class="text-primary mb-4">
+                    <i class="fas fa-credit-card me-2"></i>Paiement & Tarifs
+                </h3>
+                
+                <div class="accordion" id="accordionPaiement">
+                    <!-- Question 1 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paiement1">
+                                Quels sont les modes de paiement acceptés ?
+                            </button>
+                        </h2>
+                        <div id="paiement1" class="accordion-collapse collapse" data-bs-parent="#accordionPaiement">
+                            <div class="accordion-body">
+                                <p>Nous acceptons plusieurs modes de paiement :</p>
+                                <ul>
+                                    <li>💵 <strong>Paiement en espèces</strong> lors du rendez-vous d'inscription</li>
+                                    <li>🏦 <strong>Virement bancaire</strong> sur notre compte</li>
+                                    <li>📱 <strong>Mobile money</strong> (Orange Money, M-Pesa, etc.)</li>
+                                </ul>
+                                <p class="mb-0"><strong>Important :</strong> Aucun paiement en ligne n'est accepté. Tous les paiements se font sur rendez-vous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 2 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paiement2">
+                                Proposez-vous des facilités de paiement ?
+                            </button>
+                        </h2>
+                        <div id="paiement2" class="accordion-collapse collapse" data-bs-parent="#accordionPaiement">
+                            <div class="accordion-body">
+                                <p><strong>Oui, plusieurs options sont disponibles :</strong></p>
+                                <ul>
+                                    <li>✅ <strong>Paiement mensuel</strong> pour plus de flexibilité</li>
+                                    <li>✅ <strong>Paiement trimestriel</strong> avec 11% de réduction</li>
+                                    <li>✅ <strong>Paiement annuel</strong> avec 20% de réduction</li>
+                                    <li>✅ <strong>Échelonnement</strong> possible sur demande</li>
+                                </ul>
+                                <p>De plus, nous proposons des réductions importantes pour :</p>
+                                <ul>
+                                    <li>👨‍👩‍👧‍👦 <strong>Familles</strong> : -20% pour le 2ème membre, -30% pour le 3ème</li>
+                                    <li>🏢 <strong>Entreprises</strong> : -30% pour 5+ employés</li>
+                                    <li>🎓 <strong>Étudiants</strong> : -25% sur justificatif</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 3 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paiement3">
+                                Y a-t-il des frais cachés ?
+                            </button>
+                        </h2>
+                        <div id="paiement3" class="accordion-collapse collapse" data-bs-parent="#accordionPaiement">
+                            <div class="accordion-body">
+                                <p><strong>Non, aucun frais caché !</strong> Notre politique est la transparence totale.</p>
+                                <p>Le prix annoncé inclut :</p>
+                                <ul>
+                                    <li>✅ Tous les cours avec professeur (4h/semaine)</li>
+                                    <li>✅ Tous les supports pédagogiques (PDF, exercices, audio)</li>
+                                    <li>✅ Accès à la plateforme d'apprentissage 24h/24</li>
+                                    <li>✅ Stages avec natifs anglophones</li>
+                                    <li>✅ Examens et certifications de niveau</li>
+                                    <li>✅ Suivi personnalisé et corrections</li>
+                                </ul>
+                                <p class="mb-0">Le seul équipement nécessaire est un ordinateur avec connexion internet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cours -->
+            <div class="faq-category" id="cours">
+                <h3 class="text-primary mb-4">
+                    <i class="fas fa-chalkboard-teacher me-2"></i>Déroulement des Cours
+                </h3>
+                
+                <div class="accordion" id="accordionCours">
+                    <!-- Question 1 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cours1">
+                                Comment se déroulent les cours en ligne ?
+                            </button>
+                        </h2>
+                        <div id="cours1" class="accordion-collapse collapse" data-bs-parent="#accordionCours">
+                            <div class="accordion-body">
+                                <p>Nos cours en ligne sont <strong>interactifs et dynamiques</strong> :</p>
+                                <ul>
+                                    <li>🕐 <strong>4 sessions par semaine</strong> d'1 heure chacune</li>
+                                    <li>👨‍🏫 <strong>En direct avec professeur</strong> via plateforme dédiée</li>
+                                    <li>🗣️ <strong>Participation active</strong> de tous les étudiants</li>
+                                    <li>👥 <strong>Travail en sous-groupes</strong> pendant les cours</li>
+                                    <li>📚 <strong>Supports variés</strong> : vidéos, audio, exercices interactifs</li>
+                                    <li>💬 <strong>Interaction permanente</strong> avec le professeur</li>
+                                </ul>
+                                <p class="mb-0">C'est comme une vraie classe, mais depuis chez vous !</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 2 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cours2">
+                                Que faire si je rate un cours ?
+                            </button>
+                        </h2>
+                        <div id="cours2" class="accordion-collapse collapse" data-bs-parent="#accordionCours">
+                            <div class="accordion-body">
+                                <p>Nous comprenons que des imprévus peuvent arriver :</p>
+                                <ul>
+                                    <li>📹 <strong>Enregistrement des cours</strong> : Tous les cours sont enregistrés et disponibles en replay</li>
+                                    <li>📚 <strong>Supports complets</strong> : Vous recevez tous les documents du cours</li>
+                                    <li>🔄 <strong>Session de rattrapage</strong> : Possibilité de rejoindre un autre groupe pour rattraper</li>
+                                    <li>💬 <strong>Support individualisé</strong> : Le professeur reste disponible pour vos questions</li>
+                                </ul>
+                                <p class="mb-0"><strong>Conseil :</strong> Essayez de prévenir à l'avance pour que nous puissions mieux vous accompagner.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 3 -->
+                    <div class="accordion-item mb-3 border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cours3">
+                                Les stages avec natifs sont-ils inclus ?
+                            </button>
+                        </h2>
+                        <div id="cours3" class="accordion-collapse collapse" data-bs-parent="#accordionCours">
+                            <div class="accordion-body">
+                                <p><strong>Oui, totalement inclus !</strong> C'est l'un de nos principaux avantages.</p>
+                                <p>Les stages avec natifs comprennent :</p>
+                                <ul>
+                                    <li>🌍 <strong>2 semaines intensives</strong> avec des anglophones de différents pays</li>
+                                    <li>💬 <strong>Pratique conversationnelle</strong> dans des situations réelles</li>
+                                    <li>🎯 <strong>Accents variés</strong> : britannique, américain, australien</li>
+                                    <li>🤝 <strong>Contacts professionnels</strong> internationaux</li>
+                                    <li>📈 <strong>Boost de confiance</strong> en situation réelle</li>
+                                </ul>
+                                <p class="mb-0">Ces stages sont intégrés aux niveaux 3 et 4 et sont <strong>inclus dans le prix de la formation</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Question Personnalisée -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-3">Vous ne trouvez pas la réponse à votre question ?</h3>
+                            <p class="lead mb-4">Notre équipe est à votre disposition pour répondre à toutes vos interrogations</p>
+                            <a href="contact.html" class="btn btn-light btn-lg">
+                                <i class="fas fa-question-circle me-2"></i>Poser une Question
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4><i class="fas fa-globe-americas me-2"></i>Excellence Anglais</h4>
+                    <p>Votre partenaire de confiance pour maîtriser l'anglais. Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Formation Anglais</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="programme.html" class="text-light">Programme Complet 12 Mois</a></li>
+                        <li><a href="professeurs.html" class="text-light">Nos Professeurs</a></li>
+                        <li><a href="tarifs.html" class="text-light">Tarifs & Inscriptions</a></li>
+                        <li><a href="contact.html" class="text-light">Contact & Rendez-vous</a></li>
+                        <li><a href="faq.html" class="text-light">Questions Fréquentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Rapide</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +243 XX XXX XXXX</li>
+                        <li><i class="fas fa-envelope me-2"></i> contact@excellenceanglais.cd</li>
+                        <li><i class="fas fa-clock me-2"></i> Lun-Ven: 8h-18h</li>
+                        <li><i class="fas fa-users me-2"></i> 25 personnes max par groupe</li>
+                        <li><i class="fas fa-laptop me-2"></i> 100% en ligne</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 Excellence Anglais. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p><a href="#" class="text-light">Mentions légales</a> | <a href="#" class="text-light">Politique de confidentialité</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+        
+        backToTopButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        
+        // Recherche dans la FAQ
+        const searchBox = document.querySelector('.search-box');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            accordionItems.forEach(item => {
+                const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+                const answer = item.querySelector('.accordion-body').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    // Ouvrir l'accordéon si correspondance trouvée
+                    const collapse = item.querySelector('.accordion-collapse');
+                    if (!collapse.classList.contains('show')) {
+                        const button = item.querySelector('.accordion-button');
+                        button.click();
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        
+        // Smooth scroll pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

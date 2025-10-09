@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Excellence Anglais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --purple: #9b59b6;
+            --teal: #1abc9c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border-radius: 20px;
+            padding: 8px 20px !important;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            border: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, var(--success), var(--teal));
+            border: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--light), white);
+            border-radius: 20px;
+            padding: 30px;
+            border-left: 5px solid var(--secondary);
+            height: 100%;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            font-size: 1.2rem;
+        }
+        
+        .form-control {
+            border-radius: 15px;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .availability-badge {
+            background: linear-gradient(45deg, var(--success), var(--teal));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas me-2"></i>Excellence Anglais
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programme.html">Programme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="professeurs.html">Professeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">Contactez-Nous</h1>
+                    <p class="lead fs-5">Prenez rendez-vous pour discuter de votre projet de formation</p>
+                    <div class="availability-badge mt-3">
+                        <i class="fas fa-clock me-2"></i>Réponse sous 24 heures
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus d'Inscription -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Processus d'Inscription</h2>
+                    <p class="lead">4 étapes simples pour commencer votre formation</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h5>Demande de Contact</h5>
+                        <p class="text-muted">Remplissez le formulaire ou appelez-nous pour un premier échange</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h5>Test de Niveau</h5>
+                        <p class="text-muted">Évaluation gratuite pour déterminer votre niveau et vos objectifs</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h5>Choix de la Formule</h5>
+                        <p class="text-muted">Sélection de la formule adaptée à vos besoins et disponibilités</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h5>Début des Cours</h5>
+                        <p class="text-muted">Intégration dans votre groupe et commencement de la formation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de Contact -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header text-center bg-primary text-white">
+                            <h3 class="mb-0"><i class="fas fa-calendar-check me-2"></i>Demande de Rendez-vous</h3>
+                        </div>
+                        <div class="card-body p-5">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Nom Complet *</label>
+                                        <input type="text" class="form-control" id="name" required placeholder="Votre nom et prénom">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Téléphone *</label>
+                                        <input type="tel" class="form-control" id="phone" required placeholder="Votre numéro de téléphone">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Votre adresse email">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="niveau" class="form-label">Niveau Actuel d'Anglais *</label>
+                                    <select class="form-select" id="niveau" required>
+                                        <option value="">Sélectionnez votre niveau...</option>
+                                        <option value="debutant">Débutant complet (je ne parle pas anglais)</option>
+                                        <option value="debutant-plus">Débutant+ (je connais quelques mots)</option>
+                                        <option value="intermediaire">Intermédiaire (je peux avoir des conversations simples)</option>
+                                        <option value="avance">Avancé (je parle bien mais je veux me perfectionner)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="objectif" class="form-label">Votre Objectif Principal *</label>
+                                    <select class="form-select" id="objectif" required>
+                                        <option value="">Pourquoi voulez-vous apprendre l'anglais ?</option>
+                                        <option value="professionnel">Développement professionnel / travail</option>
+                                        <option value="etudes">Études / formations</option>
+                                        <option value="voyage">Voyages / communication internationale</option>
+                                        <option value="personnel">Développement personnel / culture</option>
+                                        <option value="famille">Pour mes enfants / famille</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="disponibilite" class="form-label">Disponibilités Horaires *</label>
+                                    <select class="form-select" id="disponibilite" required>
+                                        <option value="">Quand seriez-vous disponible ?</option>
+                                        <option value="matin">Matin (8h-12h)</option>
+                                        <option value="apres-midi">Après-midi (14h-18h)</option>
+                                        <option value="soir">Soir (18h-21h)</option>
+                                        <option value="weekend">Week-end</option>
+                                        <option value="flexible">Flexible</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Informations Complémentaires</label>
+                                    <textarea class="form-control" id="message" rows="4" placeholder="Besoins spécifiques, questions particulières, nombre de personnes..."></textarea>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Envoyer ma Demande
+                                    </button>
+                                </div>
+                                
+                                <p class="text-muted text-center mt-3">
+                                    <small><i class="fas fa-info-circle me-1"></i>Nous vous contacterons dans les 24 heures pour convenir d'un rendez-vous</small>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informations de Contact -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Autres Moyens de Nous Contacter</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-card text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Téléphone</h4>
+                        <p class="fs-5 fw-bold text-primary">+243 XX XXX XXXX</p>
+                        <p class="text-muted">Appelez-nous du lundi au vendredi de 8h à 18h</p>
+                        <div class="availability-badge">
+                            <i class="fas fa-clock me-1"></i>Réponse immédiate
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-card text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p class="fs-5 fw-bold text-primary">contact@excellenceanglais.cd</p>
+                        <p class="text-muted">Envoyez-nous un email à tout moment</p>
+                        <div class="availability-badge">
+                            <i class="fas fa-clock me-1"></i>Réponse sous 24h
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="contact-info-card text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p class="fs-5 fw-bold text-primary">+243 XX XXX XXXX</p>
+                        <p class="text-muted">Échangez avec nous en message direct</p>
+                        <div class="availability-badge">
+                            <i class="fas fa-clock me-1"></i>Réponse rapide
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informations Importantes -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h3 class="text-center text-primary mb-4">
+                                <i class="fas fa-info-circle me-2"></i>Informations Importantes
+                            </h3>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-warning text-dark p-3 rounded">
+                                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Modalités de Paiement</h5>
+                                        <p class="mb-0">Les inscriptions et paiements se font exclusivement sur rendez-vous. Aucun paiement en ligne n'est accepté.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-success text-white p-3 rounded">
+                                        <h5><i class="fas fa-gift me-2"></i>Test de Niveau Gratuit</h5>
+                                        <p class="mb-0">Tous nos nouveaux étudiants bénéficient d'un test de niveau gratuit et sans engagement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-primary text-white p-3 rounded">
+                                        <h5><i class="fas fa-users me-2"></i>Groupes Limités</h5>
+                                        <p class="mb-0">Seulement 25 étudiants par groupe pour garantir un suivi personnalisé de qualité.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-teal text-white p-3 rounded">
+                                        <h5><i class="fas fa-chalkboard-teacher me-2"></i>Professeurs Certifiés</h5>
+                                        <p class="mb-0">100% de nos enseignants sont des professionnels certifiés avec une expérience moyenne de 8 ans.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4><i class="fas fa-globe-americas me-2"></i>Excellence Anglais</h4>
+                    <p>Votre partenaire de confiance pour maîtriser l'anglais. Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Formation Anglais</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="programme.html" class="text-light">Programme Complet 12 Mois</a></li>
+                        <li><a href="professeurs.html" class="text-light">Nos Professeurs</a></li>
+                        <li><a href="tarifs.html" class="text-light">Tarifs & Inscriptions</a></li>
+                        <li><a href="contact.html" class="text-light">Contact & Rendez-vous</a></li>
+                        <li><a href="faq.html" class="text-light">Questions Fréquentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Rapide</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i> +243 XX XXX XXXX</li>
+                        <li><i class="fas fa-envelope me-2"></i> contact@excellenceanglais.cd</li>
+                        <li><i class="fas fa-clock me-2"></i> Lun-Ven: 8h-18h</li>
+                        <li><i class="fas fa-users me-2"></i> 25 personnes max par groupe</li>
+                        <li><i class="fas fa-laptop me-2"></i> 100% en ligne</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 Excellence Anglais. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p><a href="#" class="text-light">Mentions légales</a> | <a href="#" class="text-light">Politique de confidentialité</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+        
+        backToTopButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des valeurs du formulaire
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Message de confirmation
+            alert(`Merci ${name} ! Votre demande de rendez-vous a été envoyée avec succès. Nous vous contacterons au ${phone} dans les 24 heures pour convenir d'une date.`);
+            
+            // Réinitialisation du formulaire
+            this.reset();
+        });
+    </script>
+</body>
+</html>
