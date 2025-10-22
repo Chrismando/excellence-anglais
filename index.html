@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excellence Anglais - Formation d'Anglais 100% En Ligne</title>
+    <title>HiSCHOOL - Formation d'Anglais 100% En Ligne</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --purple: #9b59b6;
-            --teal: #1abc9c;
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --purple: #a855f7;
+            --teal: #14b8a6;
+            --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
         }
         
         * {
@@ -26,43 +27,61 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.7;
             color: var(--dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
         .navbar {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
             padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
         
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: white !important;
+            font-weight: 800;
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .nav-link {
-            color: white !important;
-            font-weight: 500;
-            margin: 0 10px;
-            transition: all 0.3s;
-            border-radius: 20px;
-            padding: 8px 20px !important;
+            color: var(--dark) !important;
+            font-weight: 600;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            padding: 10px 20px !important;
+            position: relative;
         }
         
-        .nav-link:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::before {
+            width: 80%;
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--teal));
+            background: var(--gradient);
             color: white;
-            padding: 120px 0;
+            padding: 140px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -75,55 +94,107 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path fill="rgba(255,255,255,0.05)" d="M0 0h1200v800H0z"/><path fill="rgba(255,255,255,0.08)" d="m0 400 1200 400V0Z"/></svg>');
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #e0f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+            100% { text-shadow: 0 0 30px rgba(255,255,255,0.6); }
         }
         
         .section-title {
             position: relative;
             margin-bottom: 3rem;
-            color: var(--primary);
-            font-weight: 700;
+            color: var(--dark);
+            font-weight: 800;
+            font-size: 2.5rem;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
-            border-radius: 2px;
+            width: 100px;
+            height: 6px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
         
         .card {
             border: none;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
             background: white;
             margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
         }
         
         .card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 40px 60px rgba(99, 102, 241, 0.2);
         }
         
         .card-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             border-bottom: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
         
         .price-tag {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            background: linear-gradient(45deg, #fff, #e0f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1;
@@ -135,10 +206,16 @@
         }
         
         .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-list li:hover {
+            background: #f8fafc;
+            transform: translateX(10px);
         }
         
         .feature-list li:last-child {
@@ -148,112 +225,190 @@
         .feature-list li i {
             color: var(--success);
             margin-right: 15px;
-            font-size: 1.2rem;
-            width: 25px;
+            font-size: 1.3rem;
+            width: 30px;
             text-align: center;
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            background: var(--gradient);
             border: none;
-            padding: 15px 35px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            padding: 18px 40px;
+            font-weight: 700;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
         
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 40px rgba(99, 102, 241, 0.4);
         }
         
         .btn-outline-primary {
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            padding: 15px 35px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s;
+            border: 3px solid var(--primary);
+            color: var(--primary);
+            padding: 18px 40px;
+            font-weight: 700;
+            border-radius: 16px;
+            transition: all 0.4s ease;
             background: transparent;
         }
         
         .btn-outline-primary:hover {
-            background: var(--secondary);
+            background: var(--gradient);
             color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(99, 102, 241, 0.3);
+            border-color: transparent;
         }
         
         .badge-discount {
-            background: linear-gradient(45deg, var(--accent), var(--warning));
+            background: var(--gradient);
             color: white;
-            padding: 8px 20px;
+            padding: 10px 25px;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
         
-        .testimonial-card {
-            background: linear-gradient(135deg, var(--light), white);
+        .daily-lesson {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .daily-lesson::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .quiz-container {
+            background: #f8fafc;
             border-radius: 20px;
             padding: 30px;
-            margin: 20px 0;
-            border-left: 5px solid var(--secondary);
+            margin-top: 30px;
+        }
+        
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .quiz-option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+        
+        .quiz-option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
         
         .avatar {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--secondary);
-            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            border: 4px solid var(--primary);
+            background: var(--gradient);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
         }
         
         footer {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+            background: linear-gradient(135deg, var(--dark), #0f172a);
             color: white;
-            padding: 60px 0 20px;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
         }
         
         .social-icons a {
             color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: all 0.3s;
+            font-size: 1.8rem;
+            margin: 0 12px;
+            transition: all 0.4s ease;
             display: inline-block;
         }
         
         .social-icons a:hover {
-            color: var(--secondary);
-            transform: translateY(-5px) scale(1.2);
+            color: var(--primary);
+            transform: translateY(-8px) scale(1.2);
         }
         
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            bottom: 40px;
+            right: 40px;
+            background: var(--gradient);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             opacity: 0;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+            font-size: 1.5rem;
         }
         
         .back-to-top.show {
@@ -261,74 +416,91 @@
         }
         
         .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 25px 40px rgba(99, 102, 241, 0.6);
         }
         
         .stat-number {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1;
+            position: relative;
+        }
+        
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
         
         .contact-info {
-            background: linear-gradient(135deg, var(--light), white);
+            background: white;
             border-radius: 20px;
             padding: 30px;
-            border-left: 5px solid var(--secondary);
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         
         .class-size-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient);
             color: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 24px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
-            margin: 20px 0;
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.3);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
         }
         
         .floating-shape {
             position: absolute;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
         
         .shape-1 {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             top: 10%;
-            left: 10%;
+            left: 5%;
             animation-delay: 0s;
         }
         
         .shape-2 {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             bottom: 10%;
-            right: 10%;
+            right: 5%;
             animation-delay: 2s;
         }
         
         .shape-3 {
-            width: 80px;
-            height: 80px;
-            top: 50%;
-            left: 5%;
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            left: 10%;
             animation-delay: 4s;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(20px) rotate(240deg) scale(0.9); }
         }
         
         .pulse {
-            animation: pulse 2s infinite;
+            animation: pulse 2.5s infinite;
         }
         
         @keyframes pulse {
@@ -338,26 +510,62 @@
         }
         
         .feature-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--secondary), var(--purple));
+            background: var(--gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             color: white;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            font-size: 2.5rem;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        .lesson-badge {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .progress-ring {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .progress-ring-circle {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .creator-signature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-globe-americas me-2"></i>Excellence Anglais
+                <i class="fas fa-graduation-cap me-2"></i>HiSCHOOL
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -369,9 +577,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="programme.html">Programme</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="professeurs.html">Professeurs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tarifs.html">Tarifs</a>
@@ -396,56 +601,56 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h1 class="display-4 fw-bold mb-4 pulse">Devenez Bilingue en Anglais en 12 Mois</h1>
-                    <p class="lead mb-4 fs-5">Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes pour un apprentissage personnalisé</p>
+                    <h1 class="hero-title mb-4">Devenez Bilingue en Anglais en 12 Mois</h1>
+                    <p class="lead mb-4 fs-4">Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes pour un apprentissage personnalisé</p>
                     
-                    <div class="class-size-card mb-4">
-                        <h3><i class="fas fa-users me-2"></i>Maximum 25 Personnes par Groupe</h3>
+                    <div class="class-size-card mb-5">
+                        <h3 class="display-6 fw-bold"><i class="fas fa-users me-3"></i>Maximum 25 Personnes par Groupe</h3>
                         <p class="mb-0 fs-5">Chaque salle de classe virtuelle est limitée à 25 étudiants pour un apprentissage personnalisé et de qualité</p>
                     </div>
                     
                     <div class="row mt-4">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-4">
                             <div class="card bg-light text-dark h-100">
                                 <div class="card-body text-center">
                                     <div class="feature-icon">
                                         <i class="fas fa-chalkboard-teacher"></i>
                                     </div>
-                                    <h5>Professeurs Professionnels</h5>
-                                    <p class="mb-0">Des enseignants certifiés et expérimentés</p>
+                                    <h4>Professeurs Experts</h4>
+                                    <p class="mb-0">Des enseignants certifiés avec +5 ans d'expérience</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-4">
                             <div class="card bg-light text-dark h-100">
                                 <div class="card-body text-center">
                                     <div class="feature-icon">
-                                        <i class="fas fa-laptop"></i>
+                                        <i class="fas fa-laptop-code"></i>
                                     </div>
-                                    <h5>100% En Ligne</h5>
-                                    <p class="mb-0">Apprenez depuis chez vous aux horaires fixes</p>
+                                    <h4>100% En Ligne</h4>
+                                    <p class="mb-0">Apprenez depuis chez vous aux horaires flexibles</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-4">
                             <div class="card bg-light text-dark h-100">
                                 <div class="card-body text-center">
                                     <div class="feature-icon">
-                                        <i class="fas fa-user-tie"></i>
+                                        <i class="fas fa-globe-americas"></i>
                                     </div>
-                                    <h5>Stages avec Natifs</h5>
-                                    <p class="mb-0">Pratiquez avec des anglophones de différents pays</p>
+                                    <h4>Immersion Totale</h4>
+                                    <p class="mb-0">Pratiquez avec des natifs de différents pays</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="mt-5">
-                        <a href="contact.html" class="btn btn-primary btn-lg me-3">
-                            <i class="fas fa-calendar-check me-2"></i>Réserver ma Place
+                        <a href="contact.html" class="btn btn-primary btn-lg me-4">
+                            <i class="fas fa-rocket me-2"></i>Commencer Maintenant
                         </a>
                         <a href="programme.html" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-book me-2"></i>Découvrir le Programme
+                            <i class="fas fa-play-circle me-2"></i>Voir le Programme
                         </a>
                     </div>
                 </div>
@@ -457,77 +662,85 @@
     <section class="py-5 bg-white">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-5">
                     <div class="stat-number">25</div>
-                    <h5>Étudiants Max par Groupe</h5>
-                    <p class="text-muted">Pour un suivi personnalisé</p>
+                    <h4>Étudiants Max</h4>
+                    <p class="text-muted">Suivi personnalisé garanti</p>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="stat-number">95%</div>
-                    <h5>Taux de Réussite</h5>
-                    <p class="text-muted">Nos étudiants atteignent leurs objectifs</p>
+                <div class="col-md-3 mb-5">
+                    <div class="stat-number">96%</div>
+                    <h4>Taux de Réussite</h4>
+                    <p class="text-muted">Objectifs atteints avec succès</p>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-5">
                     <div class="stat-number">12</div>
-                    <h5>Mois de Formation</h5>
+                    <h4>Mois Intensifs</h4>
                     <p class="text-muted">Programme complet progressif</p>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-5">
                     <div class="stat-number">4$</div>
-                    <h5>Prix par Heure</h5>
-                    <p class="text-muted">Le meilleur rapport qualité-prix</p>
+                    <h4>Par Heure</h4>
+                    <p class="text-muted">Meilleur rapport qualité-prix</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Témoignages -->
+    <!-- Leçon du Jour -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Ils Nous Font Confiance</h2>
-                    <p class="lead">Découvrez les expériences de nos étudiants</p>
+                    <h2 class="section-title">Leçon Cadeau du Jour</h2>
+                    <p class="lead">Apprenez quelque chose de nouveau chaque jour gratuitement !</p>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="avatar">MJ</div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Marie Joseph</h5>
-                                <p class="text-muted mb-0">Niveau 3 Terminé</p>
-                            </div>
-                        </div>
-                        <p class="mb-0">"Grâce aux petits groupes de 25, j'ai pu poser toutes mes questions et le professeur me connaissait personnellement. En 9 mois, je suis passée de débutante à capable de tenir des réunions en anglais !"</p>
-                    </div>
-                </div>
+            <div class="daily-lesson">
+                <span class="lesson-badge"><i class="fas fa-gift me-2"></i>Leçon Gratuite</span>
+                <h3 id="lessonTitle" class="mb-4">Les Temps en Anglais : Present Perfect</h3>
                 
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="avatar">PD</div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Paul Dédé</h5>
-                                <p class="text-muted mb-0">Entreprise - 5 employés</p>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h5><i class="fas fa-lightbulb text-warning me-2"></i>Concepts Clés</h5>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Utilisé pour les actions passées avec lien au présent</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Forme : have/has + participe passé</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mots indicateurs : already, yet, just, ever, never</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Exemple : "I have visited London three times"</li>
+                        </ul>
+                        
+                        <h5><i class="fas fa-book text-primary me-2"></i>Exemples Pratiques</h5>
+                        <div class="bg-primary text-white p-4 rounded-3 mb-4">
+                            <p class="mb-2"><strong>Affirmatif :</strong> She has finished her homework.</p>
+                            <p class="mb-2"><strong>Négatif :</strong> They haven't seen that movie yet.</p>
+                            <p class="mb-0"><strong>Question :</strong> Have you ever been to Paris?</p>
                         </div>
-                        <p class="mb-0">"Nous avons inscrit 5 employés avec la réduction entreprise. La qualité des professeurs est exceptionnelle et le suivi personnalisé a permis à toute l'équipe de progresser rapidement."</p>
                     </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="avatar">SA</div>
-                            <div class="ms-3">
-                                <h5 class="mb-0">Sarah A.</h5>
-                                <p class="text-muted mb-0">Famille - 3 membres</p>
+                    
+                    <div class="col-lg-6">
+                        <div class="quiz-container">
+                            <h5 class="text-center mb-4"><i class="fas fa-brain me-2"></i>Quiz du Jour (10 questions)</h5>
+                            <div id="quizProgress" class="text-center mb-4">
+                                <small>Question <span id="currentQuestion">1</span>/10</small>
+                                <div class="progress mt-2" style="height: 8px;">
+                                    <div id="progressBar" class="progress-bar" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            
+                            <div id="quizContent">
+                                <!-- Le contenu du quiz sera généré par JavaScript -->
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button id="nextQuestion" class="btn btn-primary" disabled>
+                                    <i class="fas fa-arrow-right me-2"></i>Question Suivante
+                                </button>
+                                <button id="showResults" class="btn btn-success d-none">
+                                    <i class="fas fa-chart-bar me-2"></i>Voir mes Résultats
+                                </button>
                             </div>
                         </div>
-                        <p class="mb-0">"Avec les réductions famille, mes deux enfants et moi suivons la formation. Les groupes sont homogènes et les professeurs s'adaptent merveilleusement bien à chaque âge."</p>
                     </div>
                 </div>
             </div>
@@ -538,45 +751,50 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h4><i class="fas fa-globe-americas me-2"></i>Excellence Anglais</h4>
-                    <p>Votre partenaire de confiance pour maîtriser l'anglais. Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes.</p>
+                <div class="col-lg-4 mb-5">
+                    <h3 class="mb-4"><i class="fas fa-graduation-cap me-2"></i>HiSCHOOL</h3>
+                    <p class="mb-4">Votre partenaire d'excellence pour maîtriser l'anglais. Formation 100% en ligne avec des professeurs professionnels et des groupes limités à 25 personnes.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/243851729059" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <h5>Formation Anglais</h5>
+                <div class="col-lg-4 mb-5">
+                    <h5 class="mb-4">Formation Anglais</h5>
                     <ul class="list-unstyled">
-                        <li><a href="programme.html" class="text-light">Programme Complet 12 Mois</a></li>
-                        <li><a href="professeurs.html" class="text-light">Nos Professeurs</a></li>
-                        <li><a href="tarifs.html" class="text-light">Tarifs & Inscriptions</a></li>
-                        <li><a href="contact.html" class="text-light">Contact & Rendez-vous</a></li>
-                        <li><a href="faq.html" class="text-light">Questions Fréquentes</a></li>
+                        <li class="mb-3"><a href="programme.html" class="text-light text-decoration-none"><i class="fas fa-arrow-right me-2"></i>Programme Complet 12 Mois</a></li>
+                        <li class="mb-3"><a href="tarifs.html" class="text-light text-decoration-none"><i class="fas fa-arrow-right me-2"></i>Tarifs & Inscriptions</a></li>
+                        <li class="mb-3"><a href="contact.html" class="text-light text-decoration-none"><i class="fas fa-arrow-right me-2"></i>Contact & Rendez-vous</a></li>
+                        <li class="mb-3"><a href="faq.html" class="text-light text-decoration-none"><i class="fas fa-arrow-right me-2"></i>Questions Fréquentes</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <h5>Contact Rapide</h5>
+                <div class="col-lg-4 mb-5">
+                    <h5 class="mb-4">Contact Rapide</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i> +243 XX XXX XXXX</li>
-                        <li><i class="fas fa-envelope me-2"></i> contact@excellenceanglais.cd</li>
-                        <li><i class="fas fa-clock me-2"></i> Lun-Ven: 8h-18h</li>
-                        <li><i class="fas fa-users me-2"></i> 25 personnes max par groupe</li>
-                        <li><i class="fas fa-laptop me-2"></i> 100% en ligne</li>
+                        <li class="mb-3"><i class="fab fa-whatsapp me-3"></i> +243 851 729 059</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3"></i> contact@hischool.cd</li>
+                        <li class="mb-3"><i class="fas fa-clock me-3"></i> Lun-Ven: 8h-20h</li>
+                        <li class="mb-3"><i class="fas fa-users me-3"></i> 25 personnes max par groupe</li>
+                        <li class="mb-3"><i class="fas fa-laptop me-3"></i> 100% en ligne - Formation digitale</li>
                     </ul>
                 </div>
             </div>
-            <hr class="mt-4 mb-4">
+            
+            <div class="creator-signature">
+                <p class="mb-0">🚀 <strong>Site web créé avec passion par Christian MANDEMBA</strong> 💻</p>
+                <small>Développeur Full-Stack & Passionné d'Education</small>
+            </div>
+            
+            <hr class="mt-5 mb-4">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p>&copy; 2024 Excellence Anglais. Tous droits réservés.</p>
+                    <p>&copy; 2024 HiSCHOOL. Tous droits réservés.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p><a href="#" class="text-light">Mentions légales</a> | <a href="#" class="text-light">Politique de confidentialité</a></p>
+                    <p><a href="#" class="text-light text-decoration-none">Mentions légales</a> | <a href="#" class="text-light text-decoration-none">Politique de confidentialité</a></p>
                 </div>
             </div>
         </div>
@@ -589,6 +807,217 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Données pour le quiz
+        const quizData = [
+            {
+                question: "Quelle est la forme correcte du Present Perfect pour 'I' (je) ?",
+                options: [
+                    "I have worked",
+                    "I has worked", 
+                    "I am worked",
+                    "I working"
+                ],
+                correct: 0
+            },
+            {
+                question: "Choisissez la phrase correcte au Present Perfect :",
+                options: [
+                    "She never visited Paris",
+                    "She has never visited Paris",
+                    "She never has visited Paris", 
+                    "She is never visited Paris"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quel mot est TYPIQUEMENT utilisé avec le Present Perfect ?",
+                options: [
+                    "Yesterday",
+                    "Last week", 
+                    "Already",
+                    "In 1999"
+                ],
+                correct: 2
+            },
+            {
+                question: "'They ___________ their homework yet.' Complétez la phrase :",
+                options: [
+                    "didn't finish",
+                    "haven't finished", 
+                    "don't finish",
+                    "won't finish"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle question est correctement formée au Present Perfect ?",
+                options: [
+                    "Did you ever see this movie?",
+                    "Have you ever seen this movie?", 
+                    "Do you ever saw this movie?",
+                    "Are you ever seen this movie?"
+                ],
+                correct: 1
+            },
+            {
+                question: "Choisissez la forme négative correcte :",
+                options: [
+                    "I haven't eaten lunch",
+                    "I hasn't eaten lunch", 
+                    "I don't have eaten lunch",
+                    "I didn't have eaten lunch"
+                ],
+                correct: 0
+            },
+            {
+                question: "'We ___________ to London three times.' Complétez avec la forme correcte :",
+                options: [
+                    "have been", 
+                    "has been",
+                    "are been",
+                    "was been"
+                ],
+                correct: 0
+            },
+            {
+                question: "Quel mot NE s'utilise PAS avec le Present Perfect ?",
+                options: [
+                    "Just",
+                    "Yet", 
+                    "Last month",
+                    "Already"
+                ],
+                correct: 2
+            },
+            {
+                question: "Transformez en question : 'She has finished her work.'",
+                options: [
+                    "Did she finish her work?",
+                    "Has she finished her work?", 
+                    "Does she finished her work?",
+                    "Is she finished her work?"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle phrase exprime une expérience de vie ?",
+                options: [
+                    "I visited Paris yesterday",
+                    "I have visited Paris several times", 
+                    "I visit Paris every year",
+                    "I will visit Paris next month"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        // Initialisation du quiz
+        function initializeQuiz() {
+            showQuestion();
+            updateProgress();
+        }
+
+        // Afficher la question actuelle
+        function showQuestion() {
+            const quizContent = document.getElementById('quizContent');
+            const question = quizData[currentQuestion];
+            
+            quizContent.innerHTML = `
+                <div class="quiz-question">${question.question}</div>
+                ${question.options.map((option, index) => `
+                    <div class="quiz-option" onclick="selectOption(${index})">
+                        ${String.fromCharCode(65 + index)}. ${option}
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // Sélectionner une option
+        function selectOption(optionIndex) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+            
+            document.getElementById('nextQuestion').disabled = false;
+            userAnswers[currentQuestion] = optionIndex;
+        }
+
+        // Question suivante
+        document.getElementById('nextQuestion').addEventListener('click', function() {
+            if (userAnswers[currentQuestion] === quizData[currentQuestion].correct) {
+                score++;
+            }
+            
+            currentQuestion++;
+            
+            if (currentQuestion < quizData.length) {
+                showQuestion();
+                updateProgress();
+                this.disabled = true;
+            } else {
+                showResults();
+            }
+        });
+
+        // Mettre à jour la progression
+        function updateProgress() {
+            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        // Afficher les résultats
+        function showResults() {
+            const quizContent = document.getElementById('quizContent');
+            const percentage = Math.round((score / quizData.length) * 100);
+            
+            let message = '';
+            let icon = '';
+            
+            if (percentage >= 80) {
+                message = 'Excellent ! Vous maîtrisez bien le Present Perfect ! 🎉';
+                icon = 'fas fa-trophy text-warning';
+            } else if (percentage >= 60) {
+                message = 'Bon travail ! Continuez à pratiquer ! 👍';
+                icon = 'fas fa-star text-success';
+            } else {
+                message = 'Bonne tentative ! Revoyez la leçon et réessayez 💪';
+                icon = 'fas fa-redo text-primary';
+            }
+            
+            quizContent.innerHTML = `
+                <div class="text-center">
+                    <i class="${icon} fa-4x mb-4"></i>
+                    <h4>Quiz Terminé !</h4>
+                    <div class="display-4 fw-bold text-primary mb-3">${percentage}%</div>
+                    <p class="mb-3">${message}</p>
+                    <p>Score : <strong>${score}/${quizData.length}</strong> bonnes réponses</p>
+                    <button class="btn btn-outline-primary mt-3" onclick="restartQuiz()">
+                        <i class="fas fa-sync-alt me-2"></i>Refaire le Quiz
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('nextQuestion').classList.add('d-none');
+            document.getElementById('showResults').classList.add('d-none');
+            document.getElementById('quizProgress').classList.add('d-none');
+        }
+
+        // Redémarrer le quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+            initializeQuiz();
+            document.getElementById('nextQuestion').classList.remove('d-none');
+            document.getElementById('quizProgress').classList.remove('d-none');
+            document.getElementById('nextQuestion').disabled = true;
+        }
+
         // Back to top button
         const backToTopButton = document.getElementById("backToTop");
         
@@ -603,24 +1032,6 @@
         backToTopButton.addEventListener("click", (e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
         
         // Animation on scroll
@@ -640,14 +1051,47 @@
 
         // Observe elements for animation
         document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.card, .stat-number');
+            const animatedElements = document.querySelectorAll('.card, .stat-number, .daily-lesson');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(el);
             });
+            
+            // Initialiser le quiz
+            initializeQuiz();
         });
+
+        // Changer la leçon quotidiennement
+        function updateDailyLesson() {
+            const lessons = [
+                {
+                    title: "Les Temps en Anglais : Present Perfect",
+                    concepts: [
+                        "Utilisé pour les actions passées avec lien au présent",
+                        "Forme : have/has + participe passé", 
+                        "Mots indicateurs : already, yet, just, ever, never",
+                        "Exemple : 'I have visited London three times'"
+                    ],
+                    examples: [
+                        "Affirmatif : She has finished her homework.",
+                        "Négatif : They haven't seen that movie yet.",
+                        "Question : Have you ever been to Paris?"
+                    ]
+                }
+                // Ajouter d'autres leçons ici pour rotation quotidienne
+            ];
+            
+            const today = new Date().getDate();
+            const lessonIndex = today % lessons.length;
+            const lesson = lessons[lessonIndex];
+            
+            document.getElementById('lessonTitle').textContent = lesson.title;
+        }
+
+        // Appeler la fonction pour mettre à jour la leçon
+        updateDailyLesson();
     </script>
 </body>
 </html>
