@@ -806,7 +806,7 @@
         </div>
     </nav>
 
-    <!-- Le reste du contenu reste inchangé -->
+    <!-- Section Hero -->
     <section class="hero-section">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
@@ -923,7 +923,6 @@
             </div>
             
             <div class="daily-lesson">
-                <!-- Contenu de la leçon reste inchangé -->
                 <span class="lesson-badge"><i class="fas fa-gift me-2"></i>Leçon Gratuite - Present Tense</span>
                 <h3 class="mb-4">Le Présent Simple en Anglais : Maîtrise Complète</h3>
                 
@@ -1178,6 +1177,333 @@
             "Finalisation de votre formation..."
         ];
 
+        // Données du quiz sur le présent simple
+        const quizQuestionsBase = [
+            {
+                question: "Quelle phrase utilise correctement le présent simple?",
+                options: [
+                    "She go to school every day",
+                    "She goes to school every day", 
+                    "She is go to school every day",
+                    "She going to school every day"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle est la forme négative correcte de: 'I like pizza'?",
+                options: [
+                    "I not like pizza",
+                    "I doesn't like pizza",
+                    "I don't like pizza",
+                    "I don't likes pizza"
+                ],
+                correct: 2
+            },
+            {
+                question: "Quelle phrase est correcte à la 3ème personne du singulier?",
+                options: [
+                    "He play football",
+                    "He plays football",
+                    "He playes football", 
+                    "He playing football"
+                ],
+                correct: 1
+            },
+            {
+                question: "Comment dit-on 'Tu travailles ici?' en anglais?",
+                options: [
+                    "You works here?",
+                    "Do you work here?",
+                    "You work here?",
+                    "Does you work here?"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle phrase utilise correctement un adverbe de fréquence?",
+                options: [
+                    "She always is happy",
+                    "She is always happy", 
+                    "Always she is happy",
+                    "She is happy always"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle est la forme correcte du verbe 'study' à la 3ème personne?",
+                options: [
+                    "study",
+                    "studys", 
+                    "studies",
+                    "studyes"
+                ],
+                correct: 2
+            },
+            {
+                question: "Comment dit-on 'Il ne regarde pas la télévision'?",
+                options: [
+                    "He not watch television",
+                    "He doesn't watches television",
+                    "He don't watch television",
+                    "He doesn't watch television"
+                ],
+                correct: 3
+            },
+            {
+                question: "Quelle phrase décrit une habitude?",
+                options: [
+                    "I am eating breakfast now",
+                    "I eat breakfast at 7 AM every day",
+                    "I ate breakfast yesterday",
+                    "I will eat breakfast tomorrow"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle est la forme interrogative correcte de: 'They live in Paris'?",
+                options: [
+                    "Do they live in Paris?",
+                    "Does they live in Paris?",
+                    "Live they in Paris?",
+                    "They live in Paris?"
+                ],
+                correct: 0
+            },
+            {
+                question: "Quelle phrase exprime une vérité générale?",
+                options: [
+                    "The sun is shining today",
+                    "Water boils at 100 degrees Celsius",
+                    "I am reading a book",
+                    "She went to the market"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle phrase utilise correctement 'doesn't'?",
+                options: [
+                    "He doesn't works here",
+                    "He doesn't work here",
+                    "He don't work here",
+                    "He not work here"
+                ],
+                correct: 1
+            },
+            {
+                question: "Comment dit-on 'Nous aimons la musique' en anglais?",
+                options: [
+                    "We likes music",
+                    "We like music",
+                    "We are like music",
+                    "We liking music"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle phrase est au présent simple?",
+                options: [
+                    "I am going to the store",
+                    "I go to the store every day",
+                    "I went to the store yesterday",
+                    "I will go to the store tomorrow"
+                ],
+                correct: 1
+            },
+            {
+                question: "Comment pose-t-on la question 'Aime-t-il le chocolat?'",
+                options: [
+                    "Do he like chocolate?",
+                    "Does he like chocolate?",
+                    "Like he chocolate?",
+                    "He likes chocolate?"
+                ],
+                correct: 1
+            },
+            {
+                question: "Quelle phrase est correcte?",
+                options: [
+                    "They plays tennis on Sundays",
+                    "They play tennis on Sundays",
+                    "They playing tennis on Sundays",
+                    "They are play tennis on Sundays"
+                ],
+                correct: 1
+            }
+        ];
+
+        // Variables du quiz
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let currentQuizQuestions = [];
+
+        // Fonction pour mélanger un tableau (algorithme de Fisher-Yates)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Fonction pour sélectionner 10 questions aléatoires
+        function getRandomQuestions() {
+            // Mélanger toutes les questions
+            const shuffled = shuffleArray([...quizQuestionsBase]);
+            // Prendre les 10 premières
+            return shuffled.slice(0, 10);
+        }
+
+        // Fonction pour initialiser le quiz
+        function initializeQuiz() {
+            currentQuizQuestions = getRandomQuestions();
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            
+            const quizContent = document.getElementById('quizContent');
+            const nextButton = document.getElementById('nextQuestion');
+            const showResultsButton = document.getElementById('showResults');
+            
+            // Réinitialiser l'interface
+            nextButton.classList.remove('d-none');
+            nextButton.disabled = true;
+            showResultsButton.classList.add('d-none');
+            
+            // Afficher la première question
+            displayQuestion(currentQuestionIndex);
+            updateProgress();
+            
+            // Événement pour le bouton suivant
+            nextButton.onclick = function() {
+                if (currentQuestionIndex < currentQuizQuestions.length - 1) {
+                    currentQuestionIndex++;
+                    displayQuestion(currentQuestionIndex);
+                    updateProgress();
+                } else {
+                    // Dernière question répondue, afficher le bouton résultats
+                    nextButton.classList.add('d-none');
+                    showResultsButton.classList.remove('d-none');
+                }
+            };
+            
+            // Événement pour afficher les résultats
+            showResultsButton.onclick = showResults;
+        }
+
+        // Fonction pour afficher une question
+        function displayQuestion(index) {
+            const quizContent = document.getElementById('quizContent');
+            const question = currentQuizQuestions[index];
+            const nextButton = document.getElementById('nextQuestion');
+            
+            // Désactiver le bouton suivant jusqu'à ce qu'une réponse soit sélectionnée
+            nextButton.disabled = true;
+            
+            // Générer le HTML de la question
+            let questionHTML = `
+                <div class="quiz-question">${question.question}</div>
+            `;
+            
+            // Ajouter les options
+            question.options.forEach((option, optionIndex) => {
+                questionHTML += `
+                    <div class="quiz-option" data-index="${optionIndex}">
+                        ${option}
+                    </div>
+                `;
+            });
+            
+            quizContent.innerHTML = questionHTML;
+            
+            // Ajouter les événements aux options
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Retirer la sélection précédente
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Sélectionner l'option cliquée
+                    this.classList.add('selected');
+                    
+                    // Stocker la réponse de l'utilisateur
+                    userAnswers[index] = parseInt(this.getAttribute('data-index'));
+                    
+                    // Activer le bouton suivant
+                    nextButton.disabled = false;
+                });
+            });
+            
+            // Restaurer la sélection précédente si elle existe
+            if (userAnswers[index] !== undefined) {
+                options[userAnswers[index]].classList.add('selected');
+                nextButton.disabled = false;
+            }
+            
+            // Mettre à jour l'affichage de la question actuelle
+            document.getElementById('currentQuestion').textContent = index + 1;
+        }
+
+        // Fonction pour mettre à jour la barre de progression
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / currentQuizQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Fonction pour afficher les résultats avec des messages amusants
+        function showResults() {
+            let score = 0;
+            
+            // Calculer le score
+            currentQuizQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    score++;
+                }
+            });
+            
+            // Déterminer le message en fonction du score
+            let message = "";
+            let resultClass = "";
+            
+            if (score <= 3) {
+                message = "Oh là là ! Il semble que le présent simple te résiste encore ! 😅 Ne t'inquiète pas, même Shakespeare a dû commencer quelque part !";
+                resultClass = "result-fail";
+            } else if (score <= 5) {
+                message = "Pas mal ! Tu as les bases, mais il reste du travail ! 🧐 Continue comme ça, tu vas y arriver !";
+                resultClass = "result-average";
+            } else if (score <= 7) {
+                message = "Bien joué ! Tu maîtrises plutôt bien le présent simple ! 🎉 Encore un petit effort pour devenir un pro !";
+                resultClass = "result-good";
+            } else if (score <= 9) {
+                message = "Excellent ! Tu es presque un expert du présent simple ! 🌟 Les verbes n'ont plus de secrets pour toi !";
+                resultClass = "result-excellent";
+            } else {
+                message = "Parfait ! 💯 Tu es un véritable maestro du présent simple ! Même la reine d'Angleterre serait impressionnée ! 👑";
+                resultClass = "result-perfect";
+            }
+            
+            // Afficher les résultats
+            const quizContent = document.getElementById('quizContent');
+            quizContent.innerHTML = `
+                <div class="text-center">
+                    <div class="display-4 ${resultClass} mb-3">${score}/10</div>
+                    <h4 class="mb-4">${message}</h4>
+                    <div class="mt-4">
+                        <p class="text-muted">Tu as répondu correctement à ${score} questions sur ${currentQuizQuestions.length}.</p>
+                        <button class="btn btn-primary mt-3" onclick="restartQuiz()">
+                            <i class="fas fa-redo me-2"></i>Refaire le quiz avec de nouvelles questions
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Masquer le bouton résultats
+            document.getElementById('showResults').classList.add('d-none');
+        }
+
+        // Fonction pour redémarrer le quiz
+        function restartQuiz() {
+            initializeQuiz();
+        }
+
         // Fonction pour créer la pluie de mots
         function createWordRain() {
             const loadingContainer = document.querySelector('.loading-container');
@@ -1268,19 +1594,31 @@
             }, 100);
         }
 
-        // Le reste du code JavaScript reste inchangé...
-        // [Tout le code JavaScript existant pour le quiz, animations, etc.]
-
         // Démarrer l'animation lorsque la page est chargée
         document.addEventListener('DOMContentLoaded', function() {
             createWordRain();
             startLoading();
             
-            // Initialiser le quiz et autres fonctionnalités
-            // [Votre code existant pour initialiser le quiz]
+            // Initialiser le quiz après le chargement
+            setTimeout(() => {
+                initializeQuiz();
+            }, 16000); // Après 16 secondes (temps de chargement)
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
-
-        // Le reste de votre code JavaScript existant...
     </script>
 </body>
 </html>
